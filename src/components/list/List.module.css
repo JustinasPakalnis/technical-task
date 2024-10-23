@@ -46,18 +46,7 @@
 .listItem {
   width: 250px;
 }
-.ascendingName {
-  display: block;
-}
-.descendingName {
-  display: none;
-}
-.ascendingLastName {
-  display: block;
-}
-.descendingLastName {
-  display: none;
-}
+
 svg:hover {
   cursor: pointer;
   transition: 0.3s;

@@ -6,7 +6,6 @@ import ButtonSmall from "../buttons/ButtonSmall.jsx";
 const MoreInfo = () => {
   const { selectedCustomerInformation, handleMoreInformationClose } =
     useContext(GlobalContext);
-  console.log(selectedCustomerInformation);
 
   return (
     <>
