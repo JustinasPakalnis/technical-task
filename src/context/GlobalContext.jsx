@@ -2,32 +2,29 @@ import { createContext, useEffect, useState } from "react";
 // import { useNavigate } from "react-router-dom";
 
 export const initialContext = {
-  darkTheme: "alio",
-  apiData: [],
-  moreInformationSelectedEmployee: {
-    firstName: "",
-    lastName: "",
-    gender: "",
-    birthDate: "",
-    customerIdentificationCode: "",
-  },
+  darkTheme: false,
+  customersList: [],
+  selectedCustomerInformation: null,
   fetchApiData: () => {},
   handleMoreInformation: () => {},
+  handleMoreInformationClose: () => {},
 };
 export const GlobalContext = createContext(initialContext);
 
 export function ContextWrapper(props) {
   const [darkTheme, setdarkTheme] = useState(initialContext.darkTheme);
-  const [apiData, setApiData] = useState(initialContext.apiData);
+  const [customersList, setCustomersList] = useState(
+    initialContext.customersList
+  );
 
-  const [moreInformationSelectedEmployee, setMoreInformationSelectedEmployee] =
-    useState(initialContext.apiData);
+  const [selectedCustomerInformation, setSelectedCustomerInformation] =
+    useState(initialContext.selectedCustomerInformation);
 
   useEffect(() => {
-    fetchApiData();
+    fetchCustomersList();
   }, []);
 
-  async function fetchApiData() {
+  async function fetchCustomersList() {
     const url = "https://hiring-api.simbuka.workers.dev";
     try {
       const response = await fetch(url);
@@ -36,21 +33,25 @@ export function ContextWrapper(props) {
       }
 
       const data = await response.json();
-      setApiData(data);
+      setCustomersList(data);
     } catch (error) {
       console.error(error.message);
     }
   }
 
-  function handleMoreInformation(employee) {
-    setMoreInformationSelectedEmployee(employee);
+  function handleMoreInformation(customer) {
+    setSelectedCustomerInformation(customer);
   }
-  console.log(moreInformationSelectedEmployee);
+  function handleMoreInformationClose() {
+    setSelectedCustomerInformation(null);
+  }
 
   const value = {
     darkTheme,
-    apiData,
+    customersList,
     handleMoreInformation,
+    handleMoreInformationClose,
+    selectedCustomerInformation,
   };
   return (
     <GlobalContext.Provider value={value}>

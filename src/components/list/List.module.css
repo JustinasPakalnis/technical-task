@@ -23,6 +23,8 @@
 .headerTitle {
   width: 250px;
   font-weight: bold;
+  display: flex;
+  gap: 1rem;
 }
 .listElement {
   display: flex;
@@ -43,4 +45,21 @@
 
 .listItem {
   width: 250px;
+}
+.ascendingName {
+  display: block;
+}
+.descendingName {
+  display: none;
+}
+.ascendingLastName {
+  display: block;
+}
+.descendingLastName {
+  display: none;
+}
+svg:hover {
+  cursor: pointer;
+  transition: 0.3s;
+  transform: scale(1.2);
 }
