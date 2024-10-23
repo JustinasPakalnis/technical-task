@@ -4,13 +4,24 @@ import { createContext, useEffect, useState } from "react";
 export const initialContext = {
   darkTheme: "alio",
   apiData: [],
+  moreInformationSelectedEmployee: {
+    firstName: "",
+    lastName: "",
+    gender: "",
+    birthDate: "",
+    customerIdentificationCode: "",
+  },
   fetchApiData: () => {},
+  handleMoreInformation: () => {},
 };
 export const GlobalContext = createContext(initialContext);
 
 export function ContextWrapper(props) {
   const [darkTheme, setdarkTheme] = useState(initialContext.darkTheme);
   const [apiData, setApiData] = useState(initialContext.apiData);
+
+  const [moreInformationSelectedEmployee, setMoreInformationSelectedEmployee] =
+    useState(initialContext.apiData);
 
   useEffect(() => {
     fetchApiData();
@@ -31,9 +42,15 @@ export function ContextWrapper(props) {
     }
   }
 
+  function handleMoreInformation(employee) {
+    setMoreInformationSelectedEmployee(employee);
+  }
+  console.log(moreInformationSelectedEmployee);
+
   const value = {
     darkTheme,
     apiData,
+    handleMoreInformation,
   };
   return (
     <GlobalContext.Provider value={value}>
