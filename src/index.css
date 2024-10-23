@@ -8,3 +8,6 @@ body * {
 body {
   font-family: sans-serif;
 }
+.mainPageContainer {
+  display: flex;
+}
