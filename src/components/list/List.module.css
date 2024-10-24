@@ -156,10 +156,6 @@
   height: 50px;
 }
 
-.paginationContainer p {
-  font-weight: bold;
-}
-
 .pageSize {
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -170,4 +166,17 @@
 
 .pageSize:hover {
   border-color: #aaa;
+}
+.paginationButton {
+  font-weight: bold;
+  font-size: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.paginationButton:hover {
+  text-decoration: underline;
+}
+.paginationButton[data-selectedpage="true"] {
+  text-decoration: underline;
 }
