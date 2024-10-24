@@ -1,10 +1,11 @@
 import { createContext, useEffect, useState } from "react";
-// import { useNavigate } from "react-router-dom";
 
 export const initialContext = {
   darkTheme: false,
   customersList: [],
   selectedCustomerInformation: null,
+  page: 0,
+  pageSize: 10,
   fetchApiData: () => {},
   handleMoreInformation: () => {},
   handleMoreInformationClose: () => {},
@@ -13,6 +14,8 @@ export const GlobalContext = createContext(initialContext);
 
 export function ContextWrapper(props) {
   const [darkTheme, setdarkTheme] = useState(initialContext.darkTheme);
+  const [page, setPage] = useState(initialContext.page);
+  const [pageSize, setPageSize] = useState(initialContext.pageSize);
   const [customersList, setCustomersList] = useState(
     initialContext.customersList
   );
@@ -22,10 +25,10 @@ export function ContextWrapper(props) {
 
   useEffect(() => {
     fetchCustomersList();
-  }, []);
+  }, [page, pageSize]);
 
   async function fetchCustomersList() {
-    const url = "https://hiring-api.simbuka.workers.dev";
+    const url = `https://hiring-api.simbuka.workers.dev/?page=${page}&size=${pageSize}`;
     try {
       const response = await fetch(url);
       if (!response.ok) {
@@ -38,6 +41,7 @@ export function ContextWrapper(props) {
       console.error(error.message);
     }
   }
+  // console.log(customersList);
 
   function handleMoreInformation(customer) {
     setSelectedCustomerInformation(customer);
@@ -52,6 +56,10 @@ export function ContextWrapper(props) {
     handleMoreInformation,
     handleMoreInformationClose,
     selectedCustomerInformation,
+    page,
+    setPage,
+    pageSize,
+    setPageSize,
   };
   return (
     <GlobalContext.Provider value={value}>
