@@ -4,6 +4,7 @@ import style from "./List.module.css";
 import ButtonSmall from "../buttons/ButtonSmall.jsx";
 import FilterComponent from "./FilterComponent.jsx";
 import SortingComponent from "./SortingComponent.jsx";
+import SearchComponent from "./SearchComponent.jsx";
 
 const CustomerListTemplate = () => {
   const { customersList, handleMoreInformation } = useContext(GlobalContext);
@@ -15,6 +16,10 @@ const CustomerListTemplate = () => {
 
   return (
     <div className={style.listContainer}>
+      <SearchComponent
+        customersList={customersList}
+        setCustomersListForDisplay={setCustomersListForDisplay}
+      ></SearchComponent>
       <div className={style.listHeader}>
         <SortingComponent
           customersListForDisplay={customersListForDisplay}
