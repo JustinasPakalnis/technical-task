@@ -38,6 +38,7 @@ export function ContextWrapper(props) {
       console.error(error.message);
     }
   }
+  console.log(customersList);
 
   function handleMoreInformation(customer) {
     setSelectedCustomerInformation(customer);
