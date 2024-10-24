@@ -1,11 +1,7 @@
 import { useState, useEffect } from "react";
 import style from "./List.module.css";
 import { FaSearch } from "react-icons/fa";
-const SearchComponent = ({
-  CustomersListForDisplay,
-  setCustomersListForDisplay,
-  customersList,
-}) => {
+const SearchComponent = ({ setCustomersListForDisplay, customersList }) => {
   const [searchText, setSearchText] = useState("");
 
   useEffect(() => {

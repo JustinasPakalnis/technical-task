@@ -1,13 +1,18 @@
+.mainListContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem;
+}
 .listContainer {
   display: flex;
   flex-direction: column;
   width: 650px;
 
   padding: 1rem;
-  border-radius: 1rem;
+  border-radius: 1rem 1rem 0 0;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   background-color: #ffffff;
-  margin: 2rem;
 }
 
 .listHeader {
@@ -94,6 +99,7 @@
   top: 15px;
   right: 105px;
 }
+
 .filterButton:hover {
   cursor: pointer;
 }
@@ -103,13 +109,18 @@
   color: rgba(0, 0, 0, 0.5);
 }
 .genderButton {
+  margin: 0 0.5rem 0 0;
   background: none;
   border: none;
 }
 .genderButton:hover {
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.1s;
   transform: scale(1.2);
+}
+.genderButton[data-selected="true"] {
+  outline: 2px solid rgb(150, 147, 147);
+  border-radius: 5px;
 }
 .genderButton svg {
   height: 1.3rem;
@@ -131,4 +142,32 @@
   position: absolute;
   top: 5px;
   left: 125px;
+}
+.paginationContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 0 0 1rem 1rem;
+  background-color: #ffffff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  width: 650px;
+  height: 50px;
+}
+
+.paginationContainer p {
+  font-weight: bold;
+}
+
+.pageSize {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 0.3rem;
+  background-color: white;
+  cursor: pointer;
+}
+
+.pageSize:hover {
+  border-color: #aaa;
 }

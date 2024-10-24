@@ -8,11 +8,10 @@ const FilterComponent = ({ customersList, setCustomersListForDisplay }) => {
   const [filterActive, setFilterActive] = useState(false);
   const [filterInputByFirstName, setFilterInputByFirstName] = useState("");
   const [filterInputByLastName, setFilterInputByLastName] = useState("");
+  const [selectedGender, setSelectedGender] = useState(null);
 
   useEffect(() => {
-    setFilterActive(false);
-    setFilterInputByFirstName("");
-    setFilterInputByLastName("");
+    handleFilterCancel();
   }, []);
 
   const handleFilterByFirstName = () => {
@@ -52,6 +51,7 @@ const FilterComponent = ({ customersList, setCustomersListForDisplay }) => {
     setFilterActive(false);
     setFilterInputByFirstName("");
     setFilterInputByLastName("");
+    setSelectedGender(null);
   };
 
   return (
@@ -91,15 +91,23 @@ const FilterComponent = ({ customersList, setCustomersListForDisplay }) => {
         </div>
 
         <button
-          onClick={() => handleFilterByGender("Female")}
+          onClick={() => {
+            handleFilterByGender("Female");
+            setSelectedGender(1);
+          }}
           className={style.genderButton}
+          data-selected={selectedGender === 1}
         >
           <IoMdFemale />
         </button>
 
         <button
-          onClick={() => handleFilterByGender("Male")}
+          onClick={() => {
+            handleFilterByGender("Male");
+            setSelectedGender(2);
+          }}
           className={style.genderButton}
+          data-selected={selectedGender === 2}
         >
           <IoMdMale />
         </button>
