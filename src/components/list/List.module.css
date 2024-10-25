@@ -151,7 +151,7 @@ svg {
   padding: 1rem;
   border-radius: 0 0 1rem 1rem;
   background-color: #ffffff;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   width: 650px;
   height: 50px;
 }

@@ -1,0 +1,30 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: #f0f0f0;
+  border-bottom: 2px solid #ddd;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  position: relative;
+}
+
+.header h1 {
+  font-size: 24px;
+  margin: 0;
+  color: #0066cc;
+}
+.displayMode {
+  position: absolute;
+  top: 75px;
+  left: 20px;
+}
+svg {
+  height: 2rem;
+  width: 2rem;
+}
+.cleanButton {
+  border: none;
+  background: none;
+}

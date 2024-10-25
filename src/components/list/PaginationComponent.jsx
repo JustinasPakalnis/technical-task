@@ -39,9 +39,7 @@ const PaginationComponent = () => {
       setPage(num);
     }
   };
-  const handlePagination = (pageNumber) => {
-    setPage(pageNumber);
-  };
+
   const offset = 2;
   return (
     <div className={style.paginationContainer}>

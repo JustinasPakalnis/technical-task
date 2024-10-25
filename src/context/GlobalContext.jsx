@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 
 export const initialContext = {
-  darkTheme: false,
+  darkMode: false,
   customersList: [],
   selectedCustomerInformation: null,
   loading: true,
@@ -16,7 +16,7 @@ export const initialContext = {
 export const GlobalContext = createContext(initialContext);
 
 export function ContextWrapper(props) {
-  const [darkTheme, setdarkTheme] = useState(initialContext.darkTheme);
+  const [darkMode, setDarkMode] = useState(initialContext.darkMode);
   const [page, setPage] = useState(initialContext.page);
   const [loading, setLoading] = useState(initialContext.loading);
   const [totalCustomersCount, setTotalCustomersCount] = useState(
@@ -90,7 +90,8 @@ export function ContextWrapper(props) {
   }
 
   const value = {
-    darkTheme,
+    darkMode,
+    setDarkMode,
     customersList,
     handleMoreInformation,
     handleMoreInformationClose,
