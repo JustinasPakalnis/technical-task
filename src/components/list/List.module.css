@@ -122,7 +122,7 @@
   outline: 2px solid rgb(150, 147, 147);
   border-radius: 5px;
 }
-.genderButton svg {
+svg {
   height: 1.3rem;
   width: 1.3rem;
 }
@@ -173,10 +173,15 @@
   background: none;
   border: none;
   cursor: pointer;
+  color: grey;
 }
 .paginationButton:hover {
   text-decoration: underline;
 }
 .paginationButton[data-selectedpage="true"] {
   text-decoration: underline;
+}
+.advancedPagination {
+  display: flex;
+  gap: 0.5rem;
 }
