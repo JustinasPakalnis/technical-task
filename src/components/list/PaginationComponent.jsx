@@ -2,15 +2,28 @@ import { useState, useEffect, useContext } from "react";
 import style from "./List.module.css";
 import ButtonSmall from "../buttons/ButtonSmall.jsx";
 import { GlobalContext } from "../../context/GlobalContext.jsx";
-
+import { MdLastPage, MdFirstPage } from "react-icons/md";
 const PaginationComponent = () => {
-  const { pageSize, setPageSize, page, setPage } = useContext(GlobalContext);
+  const {
+    pageSize,
+    setPageSize,
+    page,
+    setPage,
+    totalCustomersCount,
+    darkMode,
+  } = useContext(GlobalContext);
   const [selectedPage, setSelectedPage] = useState(page);
-  console.log(selectedPage + 1);
+  const lastPage = Math.ceil(totalCustomersCount / pageSize);
 
   useEffect(() => {
     setSelectedPage(page);
   }, [page]);
+
+  const pageNumbers = [];
+  for (let i = 0; i < lastPage; i++) {
+    pageNumbers.push(i);
+  }
+  console.log(page + 1);
 
   const handlePreviousPage = () => {
     if (page > 0) {
@@ -20,59 +33,60 @@ const PaginationComponent = () => {
   };
 
   const handleNextPage = () => {
-    setPage(page + 1);
-    setSelectedPage(page + 1);
+    if (page < lastPage - 1) {
+      setPage(page + 1);
+      setSelectedPage(page + 1);
+    }
   };
 
   const handleAdvancedPageClick = (num) => {
-    setSelectedPage(num);
-    setPage(num);
+    if (page < lastPage - 1) {
+      setSelectedPage(num);
+      setPage(num);
+    }
   };
 
+  const offset = 2;
   return (
     <div className={style.paginationContainer}>
       <ButtonSmall onClick={handlePreviousPage} text="Previous" />
+      {page !== 0 ? (
+        <button className={style.paginationButton} onClick={() => setPage(0)}>
+          <MdFirstPage />
+        </button>
+      ) : null}
+      <div className={style.advancedPagination}>
+        {pageNumbers.map((pageNummber) =>
+          pageNummber >= page - offset &&
+          pageNummber <= page + offset &&
+          pageNummber >= 0 &&
+          pageNummber < lastPage ? (
+            <button
+              onClick={() => handleAdvancedPageClick(pageNummber)}
+              key={pageNummber}
+              className={style.paginationButton}
+              data-selectedpage={selectedPage === pageNummber}
+            >
+              {pageNummber + 1}
+            </button>
+          ) : null
+        )}
+      </div>
 
-      <button
-        onClick={() => handleAdvancedPageClick(page)}
-        className={style.paginationButton}
-        data-selectedpage={selectedPage === page}
-      >
-        {page + 1}
-      </button>
-      <button
-        onClick={() => handleAdvancedPageClick(page + 1)}
-        className={style.paginationButton}
-        data-selectedpage={selectedPage === page + 1}
-      >
-        {page + 2}
-      </button>
-      <button
-        onClick={() => handleAdvancedPageClick(page + 2)}
-        className={style.paginationButton}
-        data-selectedpage={selectedPage === page + 2}
-      >
-        {page + 3}
-      </button>
-      <button
-        onClick={() => handleAdvancedPageClick(page + 3)}
-        className={style.paginationButton}
-        data-selectedpage={selectedPage === page + 3}
-      >
-        {page + 4}
-      </button>
-      <button
-        onClick={() => handleAdvancedPageClick(page + 4)}
-        className={style.paginationButton}
-        data-selectedpage={selectedPage === page + 4}
-      >
-        {page + 5}
-      </button>
+      {page !== lastPage - 1 ? (
+        <button
+          className={style.paginationButton}
+          onClick={() => setPage(lastPage - 1)}
+        >
+          <MdLastPage />
+        </button>
+      ) : null}
 
       <ButtonSmall onClick={handleNextPage} text="Next" />
 
       <select
         className={style.pageSize}
+        data-darkmode={darkMode}
         value={pageSize}
         onChange={(e) => setPageSize(Number(e.target.value))}
         required

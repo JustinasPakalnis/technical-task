@@ -8,25 +8,27 @@
   display: flex;
   flex-direction: column;
   width: 650px;
-
   padding: 1rem;
   border-radius: 1rem 1rem 0 0;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  background-color: #ffffff;
+  color: rgb(73, 73, 73);
 }
 
 .listHeader {
   display: flex;
   flex-direction: column;
-
   width: 100%;
-  background-color: rgba(199, 230, 255, 0.8);
   border-radius: 1rem;
   padding: 1rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   margin-bottom: 1rem;
 }
-
+.listHeader[data-darkmode="false"] {
+  background-color: rgba(199, 230, 255, 0.8);
+}
+.listHeader[data-darkmode="true"] {
+  background-color: rgba(0, 0, 0, 0.192);
+}
 .headerTitle {
   width: 250px;
   font-weight: bold;
@@ -38,8 +40,13 @@
   display: flex;
   align-items: center;
   width: 100%;
-  border-bottom: 1px solid #e0e0e0;
   transition: background-color 0.3s;
+}
+.listElement[data-darkmode="false"] {
+  border-bottom: 2px solid #e0e0e0;
+}
+.listElement[data-darkmode="true"] {
+  border-bottom: 2px solid #4d4d4d;
 }
 .listData {
   display: flex;
@@ -85,10 +92,17 @@
   padding: 0.5rem;
   border: 1px solid #ddd;
   cursor: pointer;
+  color: grey;
+}
+.filterInput[data-darkmode="true"] {
+  background-color: #4d4d4d;
+  border: 2px solid grey;
+}
+.filterInput[data-darkmode="false"] {
+  background-color: fff;
 }
 .filterInput:focus {
   border-color: #007bff;
-  background-color: #fff;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
   outline: none;
 }
@@ -122,7 +136,7 @@
   outline: 2px solid rgb(150, 147, 147);
   border-radius: 5px;
 }
-.genderButton svg {
+svg {
   height: 1.3rem;
   width: 1.3rem;
 }
@@ -150,22 +164,25 @@
   gap: 1rem;
   padding: 1rem;
   border-radius: 0 0 1rem 1rem;
-  background-color: #ffffff;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   width: 650px;
   height: 50px;
 }
 
 .pageSize {
-  border: 1px solid #ddd;
   border-radius: 4px;
   padding: 0.3rem;
-  background-color: white;
   cursor: pointer;
+  outline: none;
 }
-
-.pageSize:hover {
-  border-color: #aaa;
+.pageSize[data-darkmode="true"] {
+  background-color: rgba(63, 63, 63, 0.5);
+  border: 2px solid #0202026e;
+}
+.pageSize[data-darkmode="false"] {
+  background-color: white;
+  border: 1px solid #ddd;
 }
 .paginationButton {
   font-weight: bold;
@@ -173,10 +190,35 @@
   background: none;
   border: none;
   cursor: pointer;
+  color: grey;
 }
 .paginationButton:hover {
   text-decoration: underline;
 }
 .paginationButton[data-selectedpage="true"] {
   text-decoration: underline;
+}
+.advancedPagination {
+  display: flex;
+  gap: 0.5rem;
+}
+@media (max-width: 768px) {
+  .mainListContainer {
+    margin: 1rem 0;
+  }
+  .listContainer {
+    width: 500px;
+  }
+  .listItem {
+    width: 180px;
+  }
+  .headerTitle {
+    width: 180px;
+  }
+  .filterButton {
+    right: 35px;
+  }
+  .paginationContainer {
+    width: 500px;
+  }
 }
