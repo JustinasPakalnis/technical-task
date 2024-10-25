@@ -4,13 +4,17 @@ import ButtonSmall from "../buttons/ButtonSmall.jsx";
 import { GlobalContext } from "../../context/GlobalContext.jsx";
 
 const PaginationComponent = () => {
-  const { pageSize, setPageSize, page, setPage } = useContext(GlobalContext);
+  const { pageSize, setPageSize, page, setPage, totalCustomersCount } =
+    useContext(GlobalContext);
   const [selectedPage, setSelectedPage] = useState(page);
-  console.log(selectedPage + 1);
+  const [lastPage, setLastPage] = useState(totalCustomersCount / pageSize);
 
   useEffect(() => {
     setSelectedPage(page);
   }, [page]);
+  useEffect(() => {
+    setLastPage(totalCustomersCount / pageSize);
+  }, [totalCustomersCount, pageSize]);
 
   const handlePreviousPage = () => {
     if (page > 0) {
@@ -20,13 +24,17 @@ const PaginationComponent = () => {
   };
 
   const handleNextPage = () => {
-    setPage(page + 1);
-    setSelectedPage(page + 1);
+    if (page < lastPage - 1) {
+      setPage(page + 1);
+      setSelectedPage(page + 1);
+    }
   };
 
   const handleAdvancedPageClick = (num) => {
-    setSelectedPage(num);
-    setPage(num);
+    if (page < lastPage - 1) {
+      setSelectedPage(num);
+      setPage(num);
+    }
   };
 
   return (
@@ -61,6 +69,7 @@ const PaginationComponent = () => {
       >
         {page + 4}
       </button>
+
       <button
         onClick={() => handleAdvancedPageClick(page + 4)}
         className={style.paginationButton}
@@ -69,6 +78,14 @@ const PaginationComponent = () => {
         {page + 5}
       </button>
 
+      <span>...</span>
+      <button
+        onClick={() => handleAdvancedPageClick(lastPage - 1)}
+        className={style.paginationButton}
+        data-selectedpage={selectedPage === lastPage - 1}
+      >
+        {lastPage}
+      </button>
       <ButtonSmall onClick={handleNextPage} text="Next" />
 
       <select

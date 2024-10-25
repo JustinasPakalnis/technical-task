@@ -7,7 +7,8 @@ import SortingComponent from "./SortingComponent.jsx";
 import SearchComponent from "./SearchComponent.jsx";
 import PaginationComponent from "./PaginationComponent.jsx";
 const CustomerListTemplate = () => {
-  const { customersList, handleMoreInformation } = useContext(GlobalContext);
+  const { customersList, handleMoreInformation, loading } =
+    useContext(GlobalContext);
   const [customersListForDisplay, setCustomersListForDisplay] = useState([]);
 
   useEffect(() => {
