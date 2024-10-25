@@ -40,4 +40,7 @@ svg {
     justify-content: center;
     align-items: center;
   }
+  .displayMode {
+    top: 130px;
+  }
 }
