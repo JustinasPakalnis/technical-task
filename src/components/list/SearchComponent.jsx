@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import style from "./List.module.css";
+import { GlobalContext } from "../../context/GlobalContext.jsx";
 import { FaSearch } from "react-icons/fa";
 const SearchComponent = ({ setCustomersListForDisplay, customersList }) => {
   const [searchText, setSearchText] = useState("");
-
+  const { darkMode } = useContext(GlobalContext);
   useEffect(() => {
     setSearchText("");
   }, []);
@@ -22,6 +23,7 @@ const SearchComponent = ({ setCustomersListForDisplay, customersList }) => {
     <div className={style.searchContainer}>
       <input
         className={style.filterInput}
+        data-darkmode={darkMode}
         type="text"
         value={searchText}
         onChange={(e) => setSearchText(e.target.value)}

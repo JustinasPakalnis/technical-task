@@ -2,18 +2,24 @@
   display: flex;
   justify-content: space-between;
   padding: 1rem;
-  background-color: #f0f0f0;
-  border-bottom: 2px solid #ddd;
+
   position: sticky;
   top: 0;
   z-index: 1;
   position: relative;
 }
-
+.header[data-darkmode="true"] {
+  background-color: #000000d3;
+  border-bottom: 2px solid #000000;
+  color: rgba(0, 0, 0, 0.863);
+}
+.header[data-darkmode="false"] {
+  background-color: #f0f0f0;
+  border-bottom: 2px solid #ddd;
+  color: rgb(131, 28, 228);
+}
 .header h1 {
   font-size: 24px;
-  margin: 0;
-  color: #0066cc;
 }
 .displayMode {
   position: absolute;
@@ -27,4 +33,11 @@ svg {
 .cleanButton {
   border: none;
   background: none;
+}
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }

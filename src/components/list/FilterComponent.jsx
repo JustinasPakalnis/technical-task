@@ -1,10 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import style from "./List.module.css";
 import ButtonSmall from "../buttons/ButtonSmall.jsx";
+import { GlobalContext } from "../../context/GlobalContext.jsx";
 import { FaFilter } from "react-icons/fa";
 import { IoMdFemale, IoMdMale } from "react-icons/io";
 
 const FilterComponent = ({ customersList, setCustomersListForDisplay }) => {
+  const { darkMode } = useContext(GlobalContext);
   const [filterActive, setFilterActive] = useState(false);
   const [filterInputByFirstName, setFilterInputByFirstName] = useState("");
   const [filterInputByLastName, setFilterInputByLastName] = useState("");
@@ -60,6 +62,7 @@ const FilterComponent = ({ customersList, setCustomersListForDisplay }) => {
         <div className={style.filterField}>
           <input
             className={style.filterInput}
+            data-darkmode={darkMode}
             type="text"
             placeholder="Filter by first name"
             value={filterInputByFirstName}
@@ -75,6 +78,7 @@ const FilterComponent = ({ customersList, setCustomersListForDisplay }) => {
         <div className={style.filterField}>
           <select
             className={style.filterInput}
+            data-darkmode={darkMode}
             value={filterInputByLastName}
             onChange={(e) => handleFilterByLastName(e.target.value)}
             required

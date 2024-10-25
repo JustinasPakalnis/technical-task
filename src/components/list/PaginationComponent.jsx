@@ -4,8 +4,14 @@ import ButtonSmall from "../buttons/ButtonSmall.jsx";
 import { GlobalContext } from "../../context/GlobalContext.jsx";
 import { MdLastPage, MdFirstPage } from "react-icons/md";
 const PaginationComponent = () => {
-  const { pageSize, setPageSize, page, setPage, totalCustomersCount } =
-    useContext(GlobalContext);
+  const {
+    pageSize,
+    setPageSize,
+    page,
+    setPage,
+    totalCustomersCount,
+    darkMode,
+  } = useContext(GlobalContext);
   const [selectedPage, setSelectedPage] = useState(page);
   const lastPage = Math.ceil(totalCustomersCount / pageSize);
 
@@ -80,6 +86,7 @@ const PaginationComponent = () => {
 
       <select
         className={style.pageSize}
+        data-darkmode={darkMode}
         value={pageSize}
         onChange={(e) => setPageSize(Number(e.target.value))}
         required

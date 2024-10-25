@@ -7,7 +7,7 @@ const Header = () => {
   console.log(darkMode);
 
   return (
-    <header className={style.header}>
+    <header className={style.header} data-darkMode={darkMode}>
       <h1>Justinas Pakalnis</h1>
       <h1>Technical Interview Assignment</h1>
       <h1>Simbuka</h1>
