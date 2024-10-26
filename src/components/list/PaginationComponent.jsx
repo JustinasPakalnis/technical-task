@@ -23,7 +23,6 @@ const PaginationComponent = () => {
   for (let i = 0; i < lastPage; i++) {
     pageNumbers.push(i);
   }
-  console.log(page + 1);
 
   const handlePreviousPage = () => {
     if (page > 0) {

@@ -4,10 +4,9 @@ import { GlobalContext } from "../../context/GlobalContext.jsx";
 import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
 const Header = () => {
   const { darkMode, setDarkMode } = useContext(GlobalContext);
-  console.log(darkMode);
 
   return (
-    <header className={style.header} data-darkMode={darkMode}>
+    <header className={style.header} data-darkmode={darkMode}>
       <h1>Justinas Pakalnis</h1>
       <h1>Technical Interview Assignment</h1>
       <h1>Simbuka</h1>

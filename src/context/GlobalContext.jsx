@@ -1,24 +1,41 @@
 import { createContext, useEffect, useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 export const initialContext = {
   darkMode: false,
   customersList: [],
   selectedCustomerInformation: null,
   loading: true,
+  isLogInAuthorized: false,
+  username: "",
+  password: "",
+  loginCredentials: {
+    username: "Admin",
+    password: "Admin",
+  },
   page: 0,
   pageSize: 10,
-  totalCustomersCount: 500,
+  totalCustomersCount: 500, //Hard coded
   fetchApiData: () => {},
   handleMoreInformation: () => {},
   handleMoreInformationClose: () => {},
   getCustomersCount: () => {},
+  handleLogin: () => {},
 };
 export const GlobalContext = createContext(initialContext);
 
 export function ContextWrapper(props) {
+  const navigate = useNavigate();
   const [darkMode, setDarkMode] = useState(initialContext.darkMode);
   const [page, setPage] = useState(initialContext.page);
   const [loading, setLoading] = useState(initialContext.loading);
+  const [isLogInAuthorized, setIsLogInAuthorized] = useState(
+    initialContext.isLogInAuthorized
+  );
+  const [username, setUsername] = useState(initialContext.username);
+  const [password, setPassword] = useState(initialContext.password);
+  const [loginCredentials, setLoginCredentials] = useState(
+    initialContext.loginCredentials
+  );
   const [totalCustomersCount, setTotalCustomersCount] = useState(
     initialContext.totalCustomersCount
   );
@@ -65,7 +82,6 @@ export function ContextWrapper(props) {
   // }
 
   async function fetchCustomersList() {
-    setLoading(true);
     const url = `https://hiring-api.simbuka.workers.dev/?page=${page}&size=${pageSize}`;
     try {
       const response = await fetch(url);
@@ -75,7 +91,6 @@ export function ContextWrapper(props) {
 
       const data = await response.json();
       setCustomersList(data);
-      setLoading(false);
     } catch (error) {
       console.error(error.message);
     }
@@ -87,6 +102,20 @@ export function ContextWrapper(props) {
   }
   function handleMoreInformationClose() {
     setSelectedCustomerInformation(null);
+  }
+
+  function handleLogin(e) {
+    e.preventDefault();
+    if (
+      loginCredentials.username === username &&
+      loginCredentials.password === password
+    ) {
+      setIsLogInAuthorized(true);
+      navigate("/main");
+      console.log("succes");
+    } else {
+      console.log("Error");
+    }
   }
 
   const value = {
@@ -101,6 +130,11 @@ export function ContextWrapper(props) {
     pageSize,
     setPageSize,
     totalCustomersCount,
+    setUsername,
+    setPassword,
+    username,
+    password,
+    handleLogin,
   };
   return (
     <GlobalContext.Provider value={value}>
