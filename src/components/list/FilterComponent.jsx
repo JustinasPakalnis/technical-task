@@ -64,7 +64,7 @@ const FilterComponent = ({ customersList, setCustomersListForDisplay }) => {
             className={style.filterInput}
             data-darkmode={darkMode}
             type="text"
-            placeholder="Filter by name"
+            placeholder="Name"
             value={filterInputByFirstName}
             onChange={(e) => setFilterInputByFirstName(e.target.value)}
           />
@@ -84,7 +84,7 @@ const FilterComponent = ({ customersList, setCustomersListForDisplay }) => {
             required
           >
             <option value="" disabled>
-              Filter by last name
+              Last name
             </option>
             {customersList.map((customer, index) => (
               <option key={index} value={customer.lastName}>

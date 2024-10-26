@@ -203,6 +203,7 @@ svg {
 @media (max-width: 768px) {
   .mainListContainer {
     margin: 1rem 0;
+    box-shadow: none;
   }
   .listContainer {
     width: 400px;
@@ -221,6 +222,10 @@ svg {
   }
   .filterButton {
     right: 25px;
+  }
+  .searchButton svg {
+    top: 10px;
+    left: 90px;
   }
   .paginationContainer {
     width: 400px;
