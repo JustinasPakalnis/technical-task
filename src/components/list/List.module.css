@@ -223,6 +223,10 @@ svg {
   .filterButton {
     right: 25px;
   }
+  .searchButton svg {
+    top: 10px;
+    left: 90px;
+  }
   .paginationContainer {
     width: 400px;
   }
