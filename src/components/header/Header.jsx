@@ -14,7 +14,7 @@ const Header = ({ props }) => {
       <div className={style.rightBlock}>
         <h1>Simbuka</h1>
         {isLogInAuthorized && (
-          <button onClick={handleLogOut} className={style.cleanButton}>
+          <button onClick={handleLogOut} className={style.logOutButton}>
             <ImExit />
           </button>
         )}

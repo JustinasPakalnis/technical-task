@@ -203,6 +203,7 @@ svg {
 @media (max-width: 768px) {
   .mainListContainer {
     margin: 1rem 0;
+    box-shadow: none;
   }
   .listContainer {
     width: 400px;
