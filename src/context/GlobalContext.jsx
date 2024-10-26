@@ -1,24 +1,42 @@
 import { createContext, useEffect, useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 export const initialContext = {
   darkMode: false,
   customersList: [],
   selectedCustomerInformation: null,
-  loading: true,
+  isLogInAuthorized: false,
+  loginError: false,
+  username: "",
+  password: "",
+  loginCredentials: {
+    username: "Admin",
+    password: "Admin",
+  },
   page: 0,
   pageSize: 10,
-  totalCustomersCount: 500,
+  totalCustomersCount: 500, //Hard coded
   fetchApiData: () => {},
   handleMoreInformation: () => {},
   handleMoreInformationClose: () => {},
   getCustomersCount: () => {},
+  handleLogin: () => {},
+  handleLogOut: () => {},
 };
 export const GlobalContext = createContext(initialContext);
 
 export function ContextWrapper(props) {
+  const navigate = useNavigate();
   const [darkMode, setDarkMode] = useState(initialContext.darkMode);
   const [page, setPage] = useState(initialContext.page);
-  const [loading, setLoading] = useState(initialContext.loading);
+  const [loginError, setLoginError] = useState(initialContext.loginError);
+  const [isLogInAuthorized, setIsLogInAuthorized] = useState(
+    initialContext.isLogInAuthorized
+  );
+  const [username, setUsername] = useState(initialContext.username);
+  const [password, setPassword] = useState(initialContext.password);
+  const [loginCredentials, setLoginCredentials] = useState(
+    initialContext.loginCredentials
+  );
   const [totalCustomersCount, setTotalCustomersCount] = useState(
     initialContext.totalCustomersCount
   );
@@ -26,14 +44,33 @@ export function ContextWrapper(props) {
   const [customersList, setCustomersList] = useState(
     initialContext.customersList
   );
-
   const [selectedCustomerInformation, setSelectedCustomerInformation] =
     useState(initialContext.selectedCustomerInformation);
+
+  const loginTokenLocalStorage = JSON.parse(
+    sessionStorage.getItem("isLogInAuthorized")
+  );
+  const customerApiDataLocalStorage = JSON.parse(
+    localStorage.getItem("customerApiDataLocalStorage")
+  );
 
   useEffect(() => {
     fetchCustomersList();
   }, [page, pageSize]);
 
+  useEffect(() => {
+    if (customerApiDataLocalStorage) {
+      setCustomersList(customerApiDataLocalStorage);
+    } else {
+      fetchCustomersList();
+    }
+    if (loginTokenLocalStorage) {
+      setIsLogInAuthorized(true);
+      navigate("/main");
+    } else {
+      navigate("/");
+    }
+  }, []);
   // Used to check total amount of data. But causes delay on dynamic data loading. Would be great to have api for total count??
   // useEffect(() => {
   //   getCustomersCount();
@@ -65,28 +102,45 @@ export function ContextWrapper(props) {
   // }
 
   async function fetchCustomersList() {
-    setLoading(true);
     const url = `https://hiring-api.simbuka.workers.dev/?page=${page}&size=${pageSize}`;
     try {
       const response = await fetch(url);
       if (!response.ok) {
         throw new Error(`Response status: ${response.status}`);
       }
-
       const data = await response.json();
       setCustomersList(data);
-      setLoading(false);
+      localStorage.setItem("customerApiDataLocalStorage", JSON.stringify(data));
     } catch (error) {
       console.error(error.message);
     }
   }
-  // console.log(loading);
 
   function handleMoreInformation(customer) {
     setSelectedCustomerInformation(customer);
   }
   function handleMoreInformationClose() {
     setSelectedCustomerInformation(null);
+  }
+
+  function handleLogin(e) {
+    e.preventDefault();
+    if (
+      loginCredentials.username === username &&
+      loginCredentials.password === password
+    ) {
+      setIsLogInAuthorized(true);
+      navigate("/main");
+      sessionStorage.setItem("isLogInAuthorized", JSON.stringify(true));
+      setLoginError(false);
+    } else {
+      setLoginError(true);
+    }
+  }
+  function handleLogOut() {
+    setIsLogInAuthorized(false);
+    sessionStorage.setItem("isLogInAuthorized", JSON.stringify(false));
+    navigate("/");
   }
 
   const value = {
@@ -101,6 +155,14 @@ export function ContextWrapper(props) {
     pageSize,
     setPageSize,
     totalCustomersCount,
+    setUsername,
+    setPassword,
+    username,
+    password,
+    handleLogin,
+    handleLogOut,
+    isLogInAuthorized,
+    loginError,
   };
   return (
     <GlobalContext.Provider value={value}>
