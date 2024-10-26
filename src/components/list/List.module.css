@@ -207,18 +207,24 @@ svg {
     margin: 1rem 0;
   }
   .listContainer {
-    width: 500px;
+    width: 400px;
   }
   .listItem {
-    width: 180px;
+    width: 140px;
+  }
+  .filterInput {
+    width: 120px;
+  }
+  .filterField {
+    width: 200px;
   }
   .headerTitle {
-    width: 180px;
+    width: 140px;
   }
   .filterButton {
-    right: 35px;
+    right: 25px;
   }
   .paginationContainer {
-    width: 500px;
+    width: 400px;
   }
 }

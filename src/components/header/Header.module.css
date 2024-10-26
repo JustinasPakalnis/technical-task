@@ -41,6 +41,7 @@ svg {
     align-items: center;
   }
   .displayMode {
-    top: 130px;
+    top: 5px;
+    left: 5px;
   }
 }
