@@ -4,7 +4,6 @@ export const initialContext = {
   darkMode: false,
   customersList: [],
   selectedCustomerInformation: null,
-  loading: true,
   isLogInAuthorized: false,
   username: "",
   password: "",
@@ -20,6 +19,7 @@ export const initialContext = {
   handleMoreInformationClose: () => {},
   getCustomersCount: () => {},
   handleLogin: () => {},
+  handleLogOut: () => {},
 };
 export const GlobalContext = createContext(initialContext);
 
@@ -27,7 +27,6 @@ export function ContextWrapper(props) {
   const navigate = useNavigate();
   const [darkMode, setDarkMode] = useState(initialContext.darkMode);
   const [page, setPage] = useState(initialContext.page);
-  const [loading, setLoading] = useState(initialContext.loading);
   const [isLogInAuthorized, setIsLogInAuthorized] = useState(
     initialContext.isLogInAuthorized
   );
@@ -88,14 +87,12 @@ export function ContextWrapper(props) {
       if (!response.ok) {
         throw new Error(`Response status: ${response.status}`);
       }
-
       const data = await response.json();
       setCustomersList(data);
     } catch (error) {
       console.error(error.message);
     }
   }
-  // console.log(loading);
 
   function handleMoreInformation(customer) {
     setSelectedCustomerInformation(customer);
@@ -117,7 +114,10 @@ export function ContextWrapper(props) {
       console.log("Error");
     }
   }
-
+  function handleLogOut() {
+    setIsLogInAuthorized(false);
+    navigate("/");
+  }
   const value = {
     darkMode,
     setDarkMode,
@@ -135,6 +135,8 @@ export function ContextWrapper(props) {
     username,
     password,
     handleLogin,
+    handleLogOut,
+    isLogInAuthorized,
   };
   return (
     <GlobalContext.Provider value={value}>

@@ -29,10 +29,18 @@
 svg {
   height: 2rem;
   width: 2rem;
+  transition: 0.3s;
+}
+svg:hover {
+  transform: scale(1.1);
 }
 .cleanButton {
   border: none;
   background: none;
+}
+.rightBlock {
+  display: flex;
+  gap: 2rem;
 }
 @media (max-width: 768px) {
   .header {
