@@ -212,11 +212,17 @@ svg {
   .listItem {
     width: 140px;
   }
+  .filterInput {
+    width: 120px;
+  }
+  .filterField {
+    width: 200px;
+  }
   .headerTitle {
-    width: 180px;
+    width: 140px;
   }
   .filterButton {
-    right: 5px;
+    right: 25px;
   }
   .paginationContainer {
     width: 400px;

@@ -39,9 +39,9 @@ svg {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 2.5rem;
   }
   .displayMode {
-    top: 130px;
+    top: 5px;
+    left: 5px;
   }
 }
