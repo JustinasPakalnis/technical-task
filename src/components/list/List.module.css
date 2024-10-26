@@ -207,18 +207,18 @@ svg {
     margin: 1rem 0;
   }
   .listContainer {
-    width: 500px;
+    width: 400px;
   }
   .listItem {
-    width: 180px;
+    width: 140px;
   }
   .headerTitle {
     width: 180px;
   }
   .filterButton {
-    right: 35px;
+    right: 5px;
   }
   .paginationContainer {
-    width: 500px;
+    width: 400px;
   }
 }
