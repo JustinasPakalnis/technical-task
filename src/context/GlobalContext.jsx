@@ -5,6 +5,7 @@ export const initialContext = {
   customersList: [],
   selectedCustomerInformation: null,
   isLogInAuthorized: false,
+  loginError: false,
   username: "",
   password: "",
   loginCredentials: {
@@ -27,6 +28,7 @@ export function ContextWrapper(props) {
   const navigate = useNavigate();
   const [darkMode, setDarkMode] = useState(initialContext.darkMode);
   const [page, setPage] = useState(initialContext.page);
+  const [loginError, setLoginError] = useState(initialContext.loginError);
   const [isLogInAuthorized, setIsLogInAuthorized] = useState(
     initialContext.isLogInAuthorized
   );
@@ -42,14 +44,33 @@ export function ContextWrapper(props) {
   const [customersList, setCustomersList] = useState(
     initialContext.customersList
   );
-
   const [selectedCustomerInformation, setSelectedCustomerInformation] =
     useState(initialContext.selectedCustomerInformation);
+
+  const loginTokenLocalStorage = JSON.parse(
+    sessionStorage.getItem("isLogInAuthorized")
+  );
+  const customerApiDataLocalStorage = JSON.parse(
+    localStorage.getItem("customerApiDataLocalStorage")
+  );
 
   useEffect(() => {
     fetchCustomersList();
   }, [page, pageSize]);
 
+  useEffect(() => {
+    if (customerApiDataLocalStorage) {
+      setCustomersList(customerApiDataLocalStorage);
+    } else {
+      fetchCustomersList();
+    }
+    if (loginTokenLocalStorage) {
+      setIsLogInAuthorized(true);
+      navigate("/main");
+    } else {
+      navigate("/");
+    }
+  }, []);
   // Used to check total amount of data. But causes delay on dynamic data loading. Would be great to have api for total count??
   // useEffect(() => {
   //   getCustomersCount();
@@ -89,6 +110,7 @@ export function ContextWrapper(props) {
       }
       const data = await response.json();
       setCustomersList(data);
+      localStorage.setItem("customerApiDataLocalStorage", JSON.stringify(data));
     } catch (error) {
       console.error(error.message);
     }
@@ -109,15 +131,18 @@ export function ContextWrapper(props) {
     ) {
       setIsLogInAuthorized(true);
       navigate("/main");
-      console.log("succes");
+      sessionStorage.setItem("isLogInAuthorized", JSON.stringify(true));
+      setLoginError(false);
     } else {
-      console.log("Error");
+      setLoginError(true);
     }
   }
   function handleLogOut() {
     setIsLogInAuthorized(false);
+    sessionStorage.setItem("isLogInAuthorized", JSON.stringify(false));
     navigate("/");
   }
+
   const value = {
     darkMode,
     setDarkMode,
@@ -137,6 +162,7 @@ export function ContextWrapper(props) {
     handleLogin,
     handleLogOut,
     isLogInAuthorized,
+    loginError,
   };
   return (
     <GlobalContext.Provider value={value}>

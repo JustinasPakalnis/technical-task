@@ -2,8 +2,14 @@ import { useContext } from "react";
 import { GlobalContext } from "../context/GlobalContext";
 import Header from "../components/header/Header.jsx";
 const LoginPage = () => {
-  const { setUsername, setPassword, username, password, handleLogin } =
-    useContext(GlobalContext);
+  const {
+    setUsername,
+    setPassword,
+    username,
+    password,
+    handleLogin,
+    loginError,
+  } = useContext(GlobalContext);
 
   return (
     <>
@@ -50,6 +56,11 @@ const LoginPage = () => {
               Login
             </button>
           </form>
+          {loginError && (
+            <p className="text-center font-semibold text-gray-800">
+              Login error, please check login credentials or try later
+            </p>
+          )}
         </div>
       </div>
     </>

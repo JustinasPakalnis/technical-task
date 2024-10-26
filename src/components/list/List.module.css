@@ -50,7 +50,7 @@
 }
 .listData {
   display: flex;
-  padding: 1rem;
+  padding: 0.9rem;
 }
 
 .listElement:hover {
