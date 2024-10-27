@@ -33,7 +33,6 @@ const CustomerListTemplate = () => {
             setCustomersListForDisplay={setCustomersListForDisplay}
           />
         </div>
-        <button>Click me</button>
         {customersListForDisplay.length > 0 ? (
           customersListForDisplay.map((customer) => (
             <div
