@@ -19,7 +19,7 @@ This project is a technical interview assignment developed to demonstrate my ski
 - **Pagination**: Navigate through customer lists easily with pagination controls.
 - **Sorting and Filtering**: Sort and filter customer data based on first name, last name, gender.
 - **Search Functionality**: Quickly search for customers by first name or last name.
-- **Dark Mode**: Toggle dark mode for improved accessibility and user preference, only accesible for loggen in users.
+- **Dark Mode**: Toggle dark mode for improved accessibility and user preference, only accesible for authorized in users.
 - **Logout Functionality**: Log out of the application.
 - **Local Storage & Session Management**: Keeping login authorization in local session storage. And chaching customer data in local storage.
 
