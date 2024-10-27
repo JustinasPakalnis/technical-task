@@ -6,7 +6,6 @@ import FilterComponent from "./FilterComponent.jsx";
 import SortingComponent from "./SortingComponent.jsx";
 import SearchComponent from "./SearchComponent.jsx";
 import PaginationComponent from "./PaginationComponent.jsx";
-import { CgDarkMode } from "react-icons/cg";
 const CustomerListTemplate = () => {
   const { customersList, handleMoreInformation, darkMode } =
     useContext(GlobalContext);
@@ -26,6 +25,7 @@ const CustomerListTemplate = () => {
         <div className={style.listHeader} data-darkmode={darkMode}>
           <SortingComponent
             customersList={customersList}
+            customersListForDisplay={customersListForDisplay}
             setCustomersListForDisplay={setCustomersListForDisplay}
           />
           <FilterComponent

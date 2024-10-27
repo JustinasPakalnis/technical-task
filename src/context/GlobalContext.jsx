@@ -50,7 +50,6 @@ export function ContextWrapper(props) {
   const loginTokenLocalSession = JSON.parse(
     sessionStorage.getItem("isLogInAuthorized")
   );
-  console.log(loginTokenLocalSession);
 
   const customerApiDataLocalStorage = JSON.parse(
     localStorage.getItem("customerApiDataLocalStorage")
@@ -122,7 +121,6 @@ export function ContextWrapper(props) {
       console.error(error.message);
     }
   }
-  console.log(selectedCustomerInformation);
 
   function handleMoreInformation(customer) {
     setSelectedCustomerInformation(customer);
