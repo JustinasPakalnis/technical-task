@@ -16,8 +16,8 @@ const CustomerListTemplate = () => {
   }, [customersList]);
 
   return (
-    <section className={style.mainListContainer}>
-      <div className={style.listContainer}>
+    <section className={style.mainListContainer} data-darkmode={darkMode}>
+      <div className={style.listContainer} data-darkmode={darkMode}>
         <SearchComponent
           customersList={customersList}
           setCustomersListForDisplay={setCustomersListForDisplay}

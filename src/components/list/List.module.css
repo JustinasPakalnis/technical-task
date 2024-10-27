@@ -6,6 +6,12 @@
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   border-radius: 1rem;
 }
+.mainListContainer[data-darkmode="true"] {
+  color: rgba(255, 255, 255, 0.7);
+}
+.listContainer[data-darkmode="true"] {
+  color: rgba(255, 255, 255, 0.7);
+}
 .listContainer {
   display: flex;
   flex-direction: column;
