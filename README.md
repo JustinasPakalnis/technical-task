@@ -27,7 +27,11 @@ This project is a technical interview assignment developed to demonstrate my ski
 
 To get a local copy of the project up and running, follow these steps:
 
-1. Clone the repository:
+## Live Demo
+
+1. You can access the application live at the following link: [Technical Task Demo](https://technical-task-nine-rho.vercel.app)
+
+2. Clone the repository:
    ```bash
     git clone https://github.com/JustinasPakalnis/technical-task.git
     cd technical-task
