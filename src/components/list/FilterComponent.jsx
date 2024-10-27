@@ -47,7 +47,7 @@ const FilterComponent = ({
 
   const handleFilterByGender = (gender) => {
     setCustomersListForDisplay(
-      customersList.filter((customer) => customer.gender === gender)
+      customersListForDisplay.filter((customer) => customer.gender === gender)
     );
     setFilterActive(true);
   };
