@@ -30,6 +30,7 @@ const CustomerListTemplate = () => {
           />
           <FilterComponent
             customersList={customersList}
+            customersListForDisplay={customersListForDisplay}
             setCustomersListForDisplay={setCustomersListForDisplay}
           />
         </div>

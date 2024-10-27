@@ -149,6 +149,7 @@ export function ContextWrapper(props) {
     setIsLogInAuthorized(false);
     sessionStorage.setItem("isLogInAuthorized", JSON.stringify(false));
     navigate("/");
+    setDarkMode(false);
   }
 
   const value = {

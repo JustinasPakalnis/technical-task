@@ -1,8 +1,41 @@
-# React + Vite
+# Technical Interview Assignment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+This project is a technical interview assignment developed to demonstrate my skills in React, API integration. The application provides a customer management interface features for user interaction.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies Used
+
+- **React**: For building the user interface.
+- **Tailwind CSS**: For styling the application login page.
+- **Playwright**: For page testing
+- **API**: Integrated with a provided API for fetching and managing customer data.
+
+## Features
+
+- **Login Page**: Secure access to the application with username(Admin) and password(Admin) authentication.
+- **Customer List**: Displays a list of customers retrieved from the API.
+- **More Information Button**: Allows users to view additional details for each customer.
+- **Pagination**: Navigate through customer lists easily with pagination controls.
+- **Sorting and Filtering**: Sort and filter customer data based on first name, last name, gender.
+- **Search Functionality**: Quickly search for customers by first name or last name.
+- **Dark Mode**: Toggle dark mode for improved accessibility and user preference, only accesible for loggen in users.
+- **Logout Functionality**: Log out of the application.
+- **Local Storage & Session Management**: Keep login authorization in local session storage. And chaching customer data in local storage.
+
+## Getting Started
+
+To get a local copy of the project up and running, follow these steps:
+
+1. Clone the repository:
+   ```bash
+    git clone https://github.com/JustinasPakalnis/technical-task.git
+    cd technical-task
+    npm install
+    npm run dev
+   ```
+
+## Contact
+
+**Name**: Justinas Pakalnis  
+**Email**: [Justinas.p@inbox.lt](mailto:Justinas.p@inbox.lt)
