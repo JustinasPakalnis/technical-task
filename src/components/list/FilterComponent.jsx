@@ -21,6 +21,7 @@ const FilterComponent = ({
   }, []);
   useEffect(() => {
     setSelectedGender(null);
+    handleFilterCancel();
   }, [page, pageSize]);
 
   const handleFilterByFirstName = () => {
