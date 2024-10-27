@@ -12,12 +12,7 @@ const PaginationComponent = () => {
     totalCustomersCount,
     darkMode,
   } = useContext(GlobalContext);
-  const [selectedPage, setSelectedPage] = useState(page);
   const lastPage = Math.ceil(totalCustomersCount / pageSize);
-
-  useEffect(() => {
-    setSelectedPage(page);
-  }, [page]);
 
   const pageNumbers = [];
   for (let i = 0; i < lastPage; i++) {
@@ -27,21 +22,18 @@ const PaginationComponent = () => {
   const handlePreviousPage = () => {
     if (page > 0) {
       setPage(page - 1);
-      setSelectedPage(page - 1);
     }
   };
 
   const handleNextPage = () => {
     if (page < lastPage - 1) {
       setPage(page + 1);
-      setSelectedPage(page + 1);
     }
   };
 
-  const handleAdvancedPageClick = (pageNummber) => {
-    if (page < lastPage) {
-      setSelectedPage(pageNummber);
-      setPage(pageNummber);
+  const handleAdvancedPageClick = (pageNumber) => {
+    if (pageNumber >= 0 && pageNumber < lastPage) {
+      setPage(pageNumber);
     }
   };
 
@@ -50,7 +42,11 @@ const PaginationComponent = () => {
     <div className={style.paginationContainer}>
       <ButtonSmall onClick={handlePreviousPage} text="Previous" />
       {page !== 0 ? (
-        <button className={style.paginationButton} onClick={() => setPage(0)}>
+        <button
+          disabled={page === 0}
+          className={style.paginationButton}
+          onClick={() => setPage(0)}
+        >
           <MdFirstPage />
         </button>
       ) : null}
@@ -64,7 +60,7 @@ const PaginationComponent = () => {
               onClick={() => handleAdvancedPageClick(pageNummber)}
               key={pageNummber}
               className={style.paginationButton}
-              data-selectedpage={selectedPage === pageNummber}
+              data-selectedpage={page === pageNummber}
             >
               {pageNummber + 1}
             </button>
@@ -74,6 +70,7 @@ const PaginationComponent = () => {
 
       {page !== lastPage - 1 ? (
         <button
+          disabled={page === lastPage - 1}
           className={style.paginationButton}
           onClick={() => setPage(lastPage - 1)}
         >
