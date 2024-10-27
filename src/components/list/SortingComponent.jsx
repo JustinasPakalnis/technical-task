@@ -2,15 +2,12 @@ import { useState } from "react";
 import style from "./List.module.css";
 import { FaSortAlphaDown, FaSortAlphaDownAlt } from "react-icons/fa";
 
-const SortingComponent = ({
-  customersListForDisplay,
-  setCustomersListForDisplay,
-}) => {
+const SortingComponent = ({ customersList, setCustomersListForDisplay }) => {
   const [sortByFirstName, setSortByFirstName] = useState(true);
   const [sortByLastName, setSortByLastName] = useState(true);
 
   const handleSortByFirstName = () => {
-    const sortedList = [...customersListForDisplay].sort((a, b) => {
+    const sortedList = [...customersList].sort((a, b) => {
       return sortByFirstName
         ? a.firstName > b.firstName
           ? 1
@@ -24,7 +21,7 @@ const SortingComponent = ({
   };
 
   const handleSortByLastName = () => {
-    const sortedList = [...customersListForDisplay].sort((a, b) => {
+    const sortedList = [...customersList].sort((a, b) => {
       return sortByLastName
         ? a.lastName > b.lastName
           ? 1

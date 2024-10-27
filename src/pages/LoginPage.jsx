@@ -14,7 +14,7 @@ const LoginPage = () => {
   return (
     <>
       <Header props="Login"></Header>
-      <div className="flex items-center justify-center h-screen bg-gradient-to-br from-blue-100 to-blue-300">
+      <div className="flex items-center justify-center h-screen bg-gradient-to-br from-blue-100 to-blue-300 ">
         <div className="w-80 p-10 flex flex-col gap-6 bg-white rounded-2xl shadow-xl shadow-gray-400">
           <h2 className="text-center text-2xl font-semibold text-gray-800">
             Welcome
@@ -28,7 +28,7 @@ const LoginPage = () => {
               <input
                 className="rounded-lg p-3 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
                 type="text"
-                id="username"
+                name="username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 required
@@ -42,7 +42,7 @@ const LoginPage = () => {
               <input
                 className="rounded-lg p-3 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
                 type="password"
-                id="password"
+                name="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required

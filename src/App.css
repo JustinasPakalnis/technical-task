@@ -28,7 +28,6 @@ main[data-darkmode="true"] > div {
 }
 @media (max-width: 768px) {
   .mainPageContainer {
-    flex-direction: column;
     flex-direction: column-reverse;
     align-items: center;
   }

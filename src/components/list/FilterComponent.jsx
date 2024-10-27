@@ -5,7 +5,11 @@ import { GlobalContext } from "../../context/GlobalContext.jsx";
 import { FaFilter } from "react-icons/fa";
 import { IoMdFemale, IoMdMale } from "react-icons/io";
 
-const FilterComponent = ({ customersList, setCustomersListForDisplay }) => {
+const FilterComponent = ({
+  customersList,
+  setCustomersListForDisplay,
+  customersListForDisplay,
+}) => {
   const { darkMode } = useContext(GlobalContext);
   const [filterActive, setFilterActive] = useState(false);
   const [filterInputByFirstName, setFilterInputByFirstName] = useState("");
@@ -19,7 +23,7 @@ const FilterComponent = ({ customersList, setCustomersListForDisplay }) => {
   const handleFilterByFirstName = () => {
     if (filterInputByFirstName !== "") {
       setCustomersListForDisplay(
-        customersList.filter((customer) =>
+        customersListForDisplay.filter((customer) =>
           customer.firstName
             .toLowerCase()
             .includes(filterInputByFirstName.toLowerCase())
@@ -33,7 +37,7 @@ const FilterComponent = ({ customersList, setCustomersListForDisplay }) => {
   const handleFilterByLastName = (value) => {
     setFilterInputByLastName(value);
     setCustomersListForDisplay(
-      customersList.filter((customer) =>
+      customersListForDisplay.filter((customer) =>
         customer.lastName.toLowerCase().includes(value.toLowerCase())
       )
     );
@@ -86,7 +90,7 @@ const FilterComponent = ({ customersList, setCustomersListForDisplay }) => {
             <option value="" disabled>
               Last name
             </option>
-            {customersList.map((customer, index) => (
+            {customersListForDisplay.map((customer, index) => (
               <option key={index} value={customer.lastName}>
                 {customer.lastName}
               </option>
