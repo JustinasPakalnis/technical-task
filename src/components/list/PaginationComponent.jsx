@@ -38,10 +38,10 @@ const PaginationComponent = () => {
     }
   };
 
-  const handleAdvancedPageClick = (num) => {
-    if (page < lastPage - 1) {
-      setSelectedPage(num);
-      setPage(num);
+  const handleAdvancedPageClick = (pageNummber) => {
+    if (page < lastPage) {
+      setSelectedPage(pageNummber);
+      setPage(pageNummber);
     }
   };
 

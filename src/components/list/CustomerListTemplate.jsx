@@ -25,7 +25,7 @@ const CustomerListTemplate = () => {
         ></SearchComponent>
         <div className={style.listHeader} data-darkmode={darkMode}>
           <SortingComponent
-            customersListForDisplay={customersListForDisplay}
+            customersList={customersList}
             setCustomersListForDisplay={setCustomersListForDisplay}
           />
           <FilterComponent
@@ -33,7 +33,7 @@ const CustomerListTemplate = () => {
             setCustomersListForDisplay={setCustomersListForDisplay}
           />
         </div>
-
+        <button>Click me</button>
         {customersListForDisplay.length > 0 ? (
           customersListForDisplay.map((customer) => (
             <div

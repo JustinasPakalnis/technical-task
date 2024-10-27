@@ -47,10 +47,10 @@ export function ContextWrapper(props) {
   const [selectedCustomerInformation, setSelectedCustomerInformation] =
     useState(initialContext.selectedCustomerInformation);
 
-  const loginTokenLocalStorage = JSON.parse(
+  const loginTokenLocalSession = JSON.parse(
     sessionStorage.getItem("isLogInAuthorized")
   );
-  console.log(loginTokenLocalStorage);
+  console.log(loginTokenLocalSession);
 
   const customerApiDataLocalStorage = JSON.parse(
     localStorage.getItem("customerApiDataLocalStorage")
@@ -65,14 +65,19 @@ export function ContextWrapper(props) {
       setCustomersList(customerApiDataLocalStorage);
     } else {
       fetchCustomersList();
+      localStorage.setItem(
+        "customerApiDataLocalStorage",
+        JSON.stringify(customersList)
+      );
     }
-    if (loginTokenLocalStorage) {
+    if (loginTokenLocalSession) {
       setIsLogInAuthorized(true);
       navigate("/main");
     } else {
       navigate("/");
     }
   }, []);
+
   // Used to check total amount of data. But causes delay on dynamic data loading. Would be great to have api for total count??
   // useEffect(() => {
   //   getCustomersCount();
@@ -117,6 +122,7 @@ export function ContextWrapper(props) {
       console.error(error.message);
     }
   }
+  console.log(selectedCustomerInformation);
 
   function handleMoreInformation(customer) {
     setSelectedCustomerInformation(customer);
