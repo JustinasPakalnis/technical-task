@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { GlobalContext } from "../context/GlobalContext";
 import Header from "../components/header/Header.jsx";
 const LoginPage = () => {

@@ -60,6 +60,13 @@ export function ContextWrapper(props) {
   }, [page, pageSize]);
 
   useEffect(() => {
+    const timer = setInterval(() => {
+      fetchCustomersList();
+    }, 1000 * 60 * 10);
+    return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
     if (customerApiDataLocalStorage) {
       setCustomersList(customerApiDataLocalStorage);
     } else {
