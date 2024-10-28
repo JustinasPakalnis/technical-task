@@ -19,17 +19,17 @@ This project is a technical interview assignment developed to demonstrate my ski
 - **Pagination**: Navigate through customer lists easily with pagination controls.
 - **Sorting and Filtering**: Sort and filter customer data based on first name, last name, gender.
 - **Search Functionality**: Quickly search for customers by first name or last name.
-- **Dark Mode**: Toggle dark mode for improved accessibility and user preference, only accesible for logge in users.
+- **Dark Mode**: Toggle dark mode for you eye comfort, only accesible for authorized in users.
 - **Logout Functionality**: Log out of the application.
-- **Local Storage & Session Management**: Keep login authorization in local session storage. And chaching customer data in local storage.
+- **Local Storage & Session Management**: Keeping login authorization in local session storage. And chaching customer data in local storage.
 
 ## Getting Started
-
-To get a local copy of the project up and running, follow these steps:
 
 ## Live Demo
 
 1. You can access the application live at the following link: [Technical Task Demo](https://technical-task-nine-rho.vercel.app)
+
+To get a local copy of the project up and running, follow these steps:
 
 2. Clone the repository:
    ```bash
@@ -43,3 +43,4 @@ To get a local copy of the project up and running, follow these steps:
 
 **Name**: Justinas Pakalnis  
 **Email**: [Justinas.p@inbox.lt](mailto:Justinas.p@inbox.lt)
+**Phone**: +37069242305

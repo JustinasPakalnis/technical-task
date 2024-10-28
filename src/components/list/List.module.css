@@ -6,6 +6,12 @@
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   border-radius: 1rem;
 }
+.mainListContainer[data-darkmode="true"] {
+  color: rgba(255, 255, 255, 0.7);
+}
+.listContainer[data-darkmode="true"] {
+  color: rgba(255, 255, 255, 0.7);
+}
 .listContainer {
   display: flex;
   flex-direction: column;
@@ -86,13 +92,14 @@
   padding: 0.5rem 0;
   position: relative;
 }
+
 .filterInput {
   width: 150px;
   border-radius: 0.5rem;
+  height: 2.5rem;
   padding: 0.5rem;
   border: 1px solid #ddd;
   cursor: pointer;
-  color: grey;
 }
 .filterInput[data-darkmode="true"] {
   background-color: #4d4d4d;

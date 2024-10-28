@@ -10,7 +10,7 @@ const FilterComponent = ({
   setCustomersListForDisplay,
   customersListForDisplay,
 }) => {
-  const { darkMode } = useContext(GlobalContext);
+  const { darkMode, page, pageSize } = useContext(GlobalContext);
   const [filterActive, setFilterActive] = useState(false);
   const [filterInputByFirstName, setFilterInputByFirstName] = useState("");
   const [filterInputByLastName, setFilterInputByLastName] = useState("");
@@ -19,6 +19,10 @@ const FilterComponent = ({
   useEffect(() => {
     handleFilterCancel();
   }, []);
+  useEffect(() => {
+    setSelectedGender(null);
+    handleFilterCancel();
+  }, [page, pageSize]);
 
   const handleFilterByFirstName = () => {
     if (filterInputByFirstName !== "") {

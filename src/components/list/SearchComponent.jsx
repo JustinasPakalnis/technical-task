@@ -4,10 +4,10 @@ import { GlobalContext } from "../../context/GlobalContext.jsx";
 import { FaSearch } from "react-icons/fa";
 const SearchComponent = ({ setCustomersListForDisplay, customersList }) => {
   const [searchText, setSearchText] = useState("");
-  const { darkMode } = useContext(GlobalContext);
+  const { darkMode, page, pageSize } = useContext(GlobalContext);
   useEffect(() => {
     setSearchText("");
-  }, []);
+  }, [page, pageSize]);
 
   const handleSearch = () => {
     setCustomersListForDisplay(
